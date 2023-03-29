@@ -1,0 +1,111 @@
+{% extends 'app1/main.html' %}
+
+
+{%block content%}
+
+<div class="container-sm" id="header" style="background-color:aliceblue;">
+    <h2>Total Number of Departments : {{total_dept}}</h2>
+    <h2>Total Request : {{dr}}</h2>     
+</div>
+
+<div class="container-lg">
+    <div class="card card-body">
+        <form method="get" class="d-flex justify-content-center align-items-center">
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-lg-2">
+                    <label for="{{ myFilter.form.name.label }}" class="form-label">{{ myFilter.form.name.label }}</label>
+                    {{ myFilter.form.name }}
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-2">
+                    <label for="{{ myFilter.form.location.label }}" class="form-label">{{ myFilter.form.location.label }}</label>
+                    {{ myFilter.form.location }}
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-2">
+                    <label for="{{ myFilter.form.rank.label }}" class="form-label">{{ myFilter.form.rank.label }}</label>
+                    {{ myFilter.form.rank }}
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-2">
+                    <label for="{{ myFilter.form.phone.label }}" class="form-label">{{ myFilter.form.phone.label }}</label>
+                    {{ myFilter.form.phone }}
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-2">
+                    <label for="{{ myFilter.form.email.label }}" class="form-label">{{ myFilter.form.email.label }}</label>
+                    {{ myFilter.form.email }}
+                </div>
+            </div>
+            <button class="btn btn-primary mt-" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
+   <div class="col-md">
+        
+          <hr>
+          <div class="card card_body">
+              <div class ="btn btn-primary btn-block"><h2>Departments</h2></div>
+              <table class="table table-sm">
+                  <tr>
+                       <th>Dept ID</th>
+                       <th>Dept Name</th>
+                       <th>Dept Location</th>
+                       <th>Dept email</th>
+                       <th>Details</th>
+                       <th>Update</th>
+                       <th>Delete</th>
+                  </tr>
+
+                  {%for dept in depts%}
+                        <tr>
+                           <td>{{dept.id}}</td>
+                           <td>{{dept.name}}</td>
+                           <td>{{dept.location}}</td>
+                           <td>{{dept.email}}</td>
+                           <td><a class="btn btn-primary btn-sm" href="{% url 'department' dept.id %}">View</a></td>
+                           <td><a class="btn btn-info btn-sm" href="{% url 'update_dept' dept.id %}">Update</a></td>
+                           <td><a class="btn btn-danger btn-sm" href="{% url 'delete_dept' dept.id %}">Delete</a></td>
+                        </tr>     
+                  {%endfor%}
+   
+
+                </table>
+          </div>
+         
+   </div>
+
+<hr>
+
+   <div class="col-md">
+        
+          <hr>
+          <div class="card card_body">
+              <div class ="btn btn-primary btn-block"><h2>Requests</h2></div>
+              <table class="table table-sm">
+                  <tr>
+                       <th>Dept ID</th>
+                       <th>Dept Name</th>
+                       <th>Dept Location</th>
+                       <th>Dept email</th>
+                       <th>Details</th>
+                       <th>Update</th>
+                       <th>Delete</th>
+                  </tr>
+
+                  {%for department in departments%}
+                        <tr>
+                           <td>{{department.id}}</td>
+                           <td>{{department.name}}</td>
+                           <td>{{department.location}}</td>
+                           <td>{{department.email}}</td>
+                           <td><a class="btn btn-primary btn-sm" href="{% url 'department' department.id %}">View</a></td>
+                           <td><a class="btn btn-info btn-sm" href="{% url 'update_dept' department.id %}">Update</a></td>
+                           <td><a class="btn btn-danger btn-sm" href="{% url 'delete_dept' department.id %}">Delete</a></td>
+                        </tr>     
+                  {%endfor%}
+   
+
+                </table>
+          </div>
+         
+   </div>
+
+{%endblock%}

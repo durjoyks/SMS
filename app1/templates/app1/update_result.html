@@ -1,0 +1,53 @@
+{% extends 'app1/main.html' %}
+
+{% block content %}
+
+ <style>
+        .my-form {
+        background-color: rgba(171, 179, 216, 0.26);
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        }
+
+        .my-form label {
+        font-weight: bold;
+        }
+
+        .my-form input[type="number"],
+        .my-form textarea {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 8px;
+        width: 100%;
+        }
+
+        .my-form button[type="submit"] {
+        margin-top: 10px;
+        }
+ </style>
+
+
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+      <br><br>
+        <h2 class="text-center mb-4">Update Student Result</h2>
+        <form method="POST" class="my-form">
+          {% csrf_token %}
+          <div class="form-group">
+            {{ form.CGPA.label_tag }}
+            {{ form.CGPA }}
+          </div>
+          <div class="form-group">
+            {{ form.result_description.label_tag }}
+            {{ form.result_description }}
+          </div>
+          <button type="submit" class="btn btn-primary">Save Result</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+<!-- app1/static/app1/css/styles.css -->

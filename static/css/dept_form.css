@@ -1,0 +1,13 @@
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    box-shadow: 0 0 10px rgba(201, 248, 248, 0.61);
+}
+
+
+.form-group label {
+    font-weight: bold;
+}

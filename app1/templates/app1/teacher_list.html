@@ -1,0 +1,48 @@
+{% extends 'app1/main.html' %}
+
+
+{%block content%}
+
+<div class="container-sm" id="header" style="background-color:aliceblue;">
+    <h2>Total Number of Teacher: {{total_teacher}}</h2>   
+</div>
+
+
+<div class="col-md">
+          <hr>
+          <div class="card card_body" >
+              <a class ="btn btn-primary btn-sm btn-block" href="{% url 'create_teacher' %}"><h1>Create Teacher</h1></a>
+              <table class="table table-sm">
+                  <tr>
+                       <th>ID</th>
+                       <th>Name</th>
+                       <th>Department</th>
+                       <th>Rank</th>                  
+                       <th>Reg No</th>
+                       <th>Phone</th>
+                       <th>Details</th>
+                  </tr>
+                  {%for teacher in teachers%}
+
+                        <tr>
+                           <td style="color:blue;">{{teacher.id}}</td>
+                           <td>{{teacher.name}}</td>
+                           <td>{{teacher.dept}}</td>
+                           <td>{{teacher.rank}}</td>
+                           <td>{{teacher.reg_no}}</td>
+                           <td>{{teacher.phone}}</td>
+                           <td><a class="btn btn-primary btn-sm" href="{% url 'teacher_info' teacher.id %}">View</a></td>
+                        </tr>  
+                  {%endfor%}
+
+                </table>
+         </div>    
+</div>
+
+         
+    
+       
+    </div>
+
+
+{%endblock%}

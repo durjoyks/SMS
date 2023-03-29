@@ -1,0 +1,46 @@
+{% extends 'app1/main.html' %}
+
+
+{%block content%}
+
+<div class="container-sm" id="header" style="background-color:aliceblue;">
+    <h2>Total Number of {{title}}: {{total_std}}</h2>   
+</div>
+
+
+<div class="col-md">
+          <hr>
+          <div class="card card_body" style="font-size:">
+              <div class ="btn-primary btn-sm btn-block" style="text-align:center;"><h2>All Notices</h2></div>
+              <table class="table table-sm">
+                  <tr>
+                       <th>Notice ID</th>
+                       <th>Sender</th>
+                       <th>Receiver</th>
+                       <th>Subject</th>
+                       <th>Date</th>
+                       <th>Details</th>
+
+                  </tr>
+                  {%for notice in notices%}
+                        <tr>
+                           <td>{{notice.id}}</td>
+                           <td>{{notice.sender}}</td>
+                           <td>{{notice.receiver}}</td>
+                           <td>{{notice.subject}}</td>
+                           <td>{{notice.date_sent}}</td>
+                           <td><a class="btn btn-primary btn-sm" href="">View</a></td>
+                        </tr>     
+                  {%endfor%}
+
+                </table>
+         </div>    
+</div>
+
+         
+    
+       
+    </div>
+
+
+{%endblock%}

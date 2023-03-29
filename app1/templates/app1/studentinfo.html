@@ -1,0 +1,86 @@
+{% extends 'app1/main.html' %}
+
+{%block content%}
+
+<style>
+      .profile-pic{
+        max-width:300px;
+        max-height:300px;
+        margin: 0 auto;
+        border-radius:2%;
+        display: block;
+        margin: auto;
+
+      }
+
+</style>   
+
+
+<div class="container-sm" id="header">
+    <h1>Student Information</h1>
+</div>
+
+
+
+<div class="container-sm border border-secondary" id="studentinfo">
+<br>
+    <img class="profile-pic" src="{{student.profile_pic.url}}" >
+    <div class="d-flex flex-column ">
+        <div class="p-3 border-bottom">Student Name : {{student.name}}</div>       
+        <div class="p-3 border-bottom">Fathers Name : {{student.fathers_name}}</div> 
+        <div class="p-3 border-bottom">Mothers Name : {{student.mothers_name}}</div> 
+        <div class="p-3 border-bottom">Department : {{student.dept}}</div> 
+        <div class="p-3 border-bottom">Student ID : {{student.id}}</div> 
+        <div class="p-3 border-bottom">Roll No : {{student.roll}}</div> 
+        <div class="p-3 border-bottom">Registration No : {{student.reg_no}}</div> 
+        <div class="p-3 border-bottom">Session: {{student.session}}</div> 
+        <div class="p-3 border-bottom">Death of Birth : {{student.dob}}</div> 
+        <div class="p-3 border-bottom">Address : {{student.address}}</div> 
+        <div class="p-3 border-bottom">Description/Report : {{student.description}}</div> 
+        <div class="p-3 border-bottom">Avg CGPA(out of 4.00) : {{student.CGPA}}</div>
+
+
+        <div>
+             <a class="btn btn-primary btn-lg" style="margin-right:20px;" href="{% url 'result_details' student.id %}">Result Details</a>
+             {%if request.user.is_staff%}
+                 <a class="btn btn-info btn-lg" style="margin-left:20px;" href="{% url 'update_student_result' student.id %}">Result Update</a> 
+             {%endif%}
+        </div>
+
+
+
+        <div class="p-3 border-bottom" style="background-color: #c1e4f8; text-align: center;">Student Status : {{student.status}}</div>
+    
+    </div>
+</div>
+
+<br>
+
+<div class="card text-center">
+    <div class="card-footer text-muted">
+
+            <h5 class="text-primary">Contact Information</h5>
+            </div>
+                Email : {{student.email}}<br>
+                Contact Number : {{student.phone}}<br>
+                Guardian Number : {{student.guardian_phone}}<br>
+                Address : {{student.address}}<br>
+
+            </div>
+            
+    </div>
+<div>
+    
+    <br>
+    
+</tr class="card text-center">   
+  {%if request.user.is_staff%}
+     <td><a class="btn btn-primary btn-lg" style="margin-left:50px;" href="{% url 'update_std' student.id %}">Update</a></td>
+       {% if student.status == 'Pending' %}
+            <td><a class="btn btn-warning btn-lg" style="margin-left:20px;" href="{% url 'accept_std' student.id %}">Accept</a></td>
+       {% endif %}
+     <td><a class="btn btn-danger btn-lg" style="margin-left:20px;"  href="{% url 'delete_std' student.id %}">Delete</a></td>
+  {%endif%}
+</tr>     
+
+{%endblock%}

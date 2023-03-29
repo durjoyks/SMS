@@ -1,0 +1,26 @@
+{% extends 'app1/main.html' %}
+{%block content%}
+
+           <div class="card text-center ">
+                <div class="card-header bg-dark text-white">
+                    <h5 > Teacher ID : {{teacher.id}}</h5>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title text-info  ">{{teacher.name}}</h4>
+                   <h5>{{teacher.rank}}</h5>
+                    <p class="card-text text-left" >{{teacher.description}}</p>
+                </div>
+            
+                <div class="card-footer text-muted">
+                    <h5 class="text-primary">Contact Information</h5>
+                </div>
+
+                Email : {{teacher.email}}<br>
+                Contact Number : {{teacher.phone}}
+           </div>
+        <br>
+        <form method="POST" action="{% url 'delete_teacher' teacher.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-lg">Delete</button>
+        </form>
+{%endblock%}

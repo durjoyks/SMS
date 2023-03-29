@@ -1,0 +1,53 @@
+{% extends 'app1/main.html' %}
+
+
+{%block content%}
+
+<div class="container-sm" id="header" style="background-color:aliceblue;">
+    <h2>Total Number of {{title}}: {{total_std}}</h2>   
+</div>
+
+
+<div class="col-md">
+          <hr>
+          <div class="card card_body" style="font-size:">
+              <div class ="btn-primary btn-lg btn-block" style="text-align:center;"><h1>All Student</h1></div>
+              <table class="table table-sm">
+                  <tr>
+                       <th>Std ID</th>
+                       <th>Name</th>
+                       <th>Department</th>
+                       <th>Roll</th>
+                       <th>Session</th>
+                       <th>Details</th>
+                       <th>Update</th>
+                       <th>Delete</th>
+                  </tr>
+                  {%for student in students%}
+                        <tr>
+                           <td>{{student.id}}</td>
+                           <td>{{student.name}}</td>
+                           <td>{{student.dept}}</td>
+                           <td>{{student.roll}}</td>
+                           <td>{{student.session}}</td>
+                           <td><a class="btn btn-primary btn-sm" href="{% url 'studentinfo' student.id %}">View</a></td>
+                           <td><a class="btn btn-info btn-sm" href="{% url 'update_std' student.id %}">Update</a></td>
+                           {% if func == 'std_req' %}    
+                              <td><a class="btn btn-warning btn-sm" href="{% url 'accept_std' student.id %}">Accept</a></td>
+                           {%endif%}
+                           <td><a class="btn btn-danger btn-sm" href="{% url 'delete_std' student.id %}">Delete</a></td>
+
+                        </tr>     
+                  {%endfor%}
+
+                </table>
+         </div>    
+</div>
+
+         
+    
+       
+    </div>
+
+
+{%endblock%}

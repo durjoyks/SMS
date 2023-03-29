@@ -1,0 +1,73 @@
+{% extends 'app1/main.html' %}
+
+{%block content%}
+
+<style>
+      .profile-pic{
+        max-width:300px;
+        max-height:300px;
+        margin: 0 auto;
+        border-radius:2%;
+        display: block;
+        margin: auto;
+
+      }
+
+</style>     
+
+{% if student.status == 'Pending'%}
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin:0px;">
+    <h4 class="alert-heading fw-bold mb-3">Important Notice!</h4>
+    <p class="mb-2">Please ensure that you have submitted all required information correctly.</p>
+    <p class="mb-4">Make sure each piece of information is valid. To submit or update your information, please go to Account Settings.</p>
+    </div>
+
+{% endif %}
+
+<div class="container-sm" id="header">
+    <h1>Student Information</h1>
+</div>
+
+
+<div class="container-sm border border-secondary" id="studentinfo">
+<br>
+    <img class="profile-pic" src="{{request.user.student.profile_pic.url}}" >
+    <div class="d-flex flex-column ">
+        <div class="p-3 border-bottom">Student Name : {{student.name}}</div>       
+        <div class="p-3 border-bottom">Fathers Name : {{student.fathers_name}}</div> 
+        <div class="p-3 border-bottom">Mothers Name : {{student.mothers_name}}</div> 
+        <div class="p-3 border-bottom">Department : {{student.dept}}</div> 
+        <div class="p-3 border-bottom">Student ID : {{student.id}}</div> 
+        <div class="p-3 border-bottom">Roll No : {{student.roll}}</div> 
+        <div class="p-3 border-bottom">Registration No : {{student.reg_no}}</div> 
+        <div class="p-3 border-bottom">Session: {{student.session}}</div> 
+        <div class="p-3 border-bottom">Death of Birth : {{student.dob}}</div> 
+        <div class="p-3 border-bottom">Address : {{student.address}}</div> 
+        <div class="p-3 border-bottom">Description/Report : {{student.description}}</div> 
+        <div class="p-3 border-bottom">Avg CGPA(out of 4.00) : {{student.CGPA}}</div>
+        <a class="btn btn-primary btn-lg" style="margin-right:20px;" href="{% url 'result_details' student.id %}">Result Details</a>
+<br>
+        <div class="p-3 border-bottom" style="background-color: #c1e4f8; text-align: center;">Student Status : {{student.status}}</div>
+    </div>
+</div>
+
+
+<div class="card text-center">
+    <div class="card-footer text-muted">
+
+            <h5 class="text-primary">Contact Information</h5>
+            </div>
+                Email : {{student.email}}<br>
+                Contact Number : {{student.phone}}<br>
+                Guardian Number : {{student.guardian_phone}}<br>
+                Address : {{student.address}}<br>
+
+            </div>
+            
+    </div>
+<div>
+    
+    <br>    
+
+{%endblock%}

@@ -1,0 +1,18 @@
+body{
+    background-color: #afc4e4;
+}
+
+#header{
+    background-color: #7ce9bc;   
+    text-align:center;
+    color:rgb(27, 27, 134);
+    padding: 70px;
+
+}
+
+#studentinfo{
+    background-color: #b9e2e9;
+    padding-left: 50px;
+    padding-right: 10px;
+    font-size: 20px;
+}
